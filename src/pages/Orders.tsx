@@ -5,9 +5,8 @@ import { Column } from "react-table";
 import TableHOC from "../components/admin/TableHOC";
 import { Skeleton } from "../components/Loader";
 import { useMyOrdersQuery } from "../redux/api/orderAPI";
-import { customError } from "../types/apiTypes";
-import { userReducerInitialStateTypes } from "../types/reducerTypes";
 import { RootState } from "../redux/store";
+import { customError } from "../types/apiTypes";
 
 type DataType = {
   _id: string;

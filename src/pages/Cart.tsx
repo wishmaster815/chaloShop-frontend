@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -8,18 +9,13 @@ import {
   discountApplied,
   removeCartItem,
 } from "../redux/reducer/cartReducer";
-import { cartReducerInitialStateTypes } from "../types/reducerTypes";
+import { RootState, server } from "../redux/store";
 import { cartItem } from "../types/types";
-import axios from "axios";
-import { server } from "../redux/store";
 // import {VscError} from "react-icons"
 
 const Cart = () => {
   const { cartItems, subtotal, total, tax, shippingCharges, discount } =
-    useSelector(
-      (state: { cartReducer: cartReducerInitialStateTypes }) =>
-        state.cartReducer
-    );
+    useSelector((state: RootState) => state.cartReducer);
   const dispatch = useDispatch();
 
   const [couponCode, setCouponCode] = useState<string>("");
@@ -59,7 +55,7 @@ const Cart = () => {
           dispatch(calculatePrice());
         });
     }, 1000);
-    
+
     return () => {
       clearTimeout(id);
       cancel();
