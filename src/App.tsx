@@ -48,7 +48,7 @@ const App = () => {
     (state: { userReducer: userReducerInitialStateTypes }) => state.userReducer
   );
 
-  return signOut(auth).then((c) => console.log("done"));
+  return signOut(auth).then(() => console.log("done"));
 
   const dispatch = useDispatch();
 
