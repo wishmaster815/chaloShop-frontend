@@ -6,7 +6,7 @@ import Loader from "./components/Loader";
 import Header from "./components/header";
 
 import { Toaster } from "react-hot-toast";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "./firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { userExists, userNotExists } from "./redux/reducer/userReducer";
@@ -47,6 +47,8 @@ const App = () => {
   const { user, loading } = useSelector(
     (state: { userReducer: userReducerInitialStateTypes }) => state.userReducer
   );
+
+  return signOut(auth).then((c) => console.log("done"));
 
   const dispatch = useDispatch();
 
